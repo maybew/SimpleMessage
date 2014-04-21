@@ -49,4 +49,11 @@ public class Session extends Thread {
 			context.logUserout(this);
 		}
 	}
+	
+	public String getClientInfo() {
+		if(clientSocket != null && !clientSocket.isClosed()) {
+			return clientSocket.getInetAddress().getHostAddress();
+		}
+		return "";
+	}
 }

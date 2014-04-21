@@ -33,6 +33,9 @@ public class Controller {
 	public JSONObject dispatch(JSONObject jo) {
 		try {
 			String opType = jo.getString(Field.OPERATION_TYPE);
+			
+			System.out.println(opType + " " + session.getClientInfo() + " @ " + DatetimeHelper.getNowDatetimeString());
+			
 			Method method = this.getClass().getDeclaredMethod(opType,
 					JSONObject.class);
 			return (JSONObject) method.invoke(this, jo);
