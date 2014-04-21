@@ -124,6 +124,8 @@ public class Controller {
 				String datetime = jo.getString(Field.DATETIME);
 				if ((datetime = DatetimeHelper.formatDatetimeString(datetime)) != null) {
 					synchronized (da) {
+						if(da.getUser(author) == null)
+							return ResponseFactory.produceErrorJSON("Author does not exist.");
 						boolean succeed;
 						if (da.getSubscribe(username, author) != null)
 							succeed = da.updateSubscribe(username, author,
